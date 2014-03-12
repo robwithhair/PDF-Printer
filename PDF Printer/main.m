@@ -27,12 +27,13 @@ int main(int argc, const char * argv[])
         
         // Create the print settings.
         NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
+        /*
         [printInfo setTopMargin:0.0];
         [printInfo setBottomMargin:0.0];
         [printInfo setLeftMargin:0.0];
         [printInfo setRightMargin:0.0];
         [printInfo setHorizontalPagination:NSFitPagination];
-        [printInfo setVerticalPagination:NSFitPagination];
+        [printInfo setVerticalPagination:NSFitPagination];*/
         
         // Create the document reference.
         PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
@@ -40,7 +41,7 @@ int main(int argc, const char * argv[])
         //- (NSPrintOperation *) printOperationForPrintInfo: (NSPrintInfo *) printInfo scalingMode: (PDFPrintScalingMode) scaleMode autoRotate: (BOOL) doRotate;
         
         BOOL autoRotate = YES;
-        PDFPrintScalingMode scale = kPDFPrintPageScaleDownToFit; // see PDFDocument.h
+        PDFPrintScalingMode scale = kPDFPrintPageScaleToFit; // see PDFDocument.h
         NSPrintOperation *op = [pdfDocument printOperationForPrintInfo: printInfo scalingMode: scale autoRotate: autoRotate];
         // Invoke private method.
         // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
