@@ -10,6 +10,7 @@
 		C55FD5F518CFED570076342C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD5F418CFED570076342C /* Foundation.framework */; };
 		C55FD5F818CFED570076342C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C55FD5F718CFED570076342C /* main.m */; };
 		C55FD5FC18CFED570076342C /* PDF_Printer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C55FD5FB18CFED570076342C /* PDF_Printer.1 */; };
+		C55FD64318D0B7EC0076342C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64218D0B7EC0076342C /* Quartz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		C55FD5F718CFED570076342C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C55FD5FA18CFED570076342C /* PDF Printer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PDF Printer-Prefix.pch"; sourceTree = "<group>"; };
 		C55FD5FB18CFED570076342C /* PDF_Printer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PDF_Printer.1; sourceTree = "<group>"; };
+		C55FD64218D0B7EC0076342C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C55FD64318D0B7EC0076342C /* Quartz.framework in Frameworks */,
 				C55FD5F518CFED570076342C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +68,7 @@
 		C55FD5F318CFED570076342C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C55FD64218D0B7EC0076342C /* Quartz.framework */,
 				C55FD5F418CFED570076342C /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -251,6 +255,7 @@
 				C55FD60118CFED570076342C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
