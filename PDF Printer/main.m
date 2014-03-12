@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 #import <Quartz/Quartz.h>
+#import <ApplicationServices/ApplicationServices.h>
 
 
 int main(int argc, const char * argv[])
@@ -34,6 +35,10 @@ int main(int argc, const char * argv[])
         [printInfo setRightMargin:0.0];
         [printInfo setHorizontalPagination:NSFitPagination];
         [printInfo setVerticalPagination:NSFitPagination];*/
+        PMPrintSettings printSettings = [printInfo PMPrintSettings];
+        PMDuplexMode duplexMode = kPMDuplexNoTumble;
+        PMSetDuplex(printSettings, duplexMode);
+        [printInfo updateFromPMPrintSettings];
         
         // Create the document reference.
         PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];

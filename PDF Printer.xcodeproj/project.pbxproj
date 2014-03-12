@@ -12,6 +12,7 @@
 		C55FD5FC18CFED570076342C /* PDF_Printer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C55FD5FB18CFED570076342C /* PDF_Printer.1 */; };
 		C55FD64318D0B7EC0076342C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64218D0B7EC0076342C /* Quartz.framework */; };
 		C55FD64518D0CEFA0076342C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64418D0CEFA0076342C /* AppKit.framework */; };
+		C55FD64718D0F0620076342C /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64618D0F0620076342C /* ApplicationServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		C55FD5FB18CFED570076342C /* PDF_Printer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PDF_Printer.1; sourceTree = "<group>"; };
 		C55FD64218D0B7EC0076342C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		C55FD64418D0CEFA0076342C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C55FD64618D0F0620076342C /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C55FD64718D0F0620076342C /* ApplicationServices.framework in Frameworks */,
 				C55FD64518D0CEFA0076342C /* AppKit.framework in Frameworks */,
 				C55FD64318D0B7EC0076342C /* Quartz.framework in Frameworks */,
 				C55FD5F518CFED570076342C /* Foundation.framework in Frameworks */,
@@ -71,6 +74,7 @@
 		C55FD5F318CFED570076342C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C55FD64618D0F0620076342C /* ApplicationServices.framework */,
 				C55FD64418D0CEFA0076342C /* AppKit.framework */,
 				C55FD64218D0B7EC0076342C /* Quartz.framework */,
 				C55FD5F418CFED570076342C /* Foundation.framework */,
