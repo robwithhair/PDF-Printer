@@ -18,10 +18,44 @@ int main(int argc, const char * argv[])
         //NSLog(@"intArg    = %ld", (long)[args integerForKey:@"intArg"]);
         //NSLog(@"floatArg  = %f", [args floatForKey:@"floatArg"]);
         NSLog(@"PDF Filepath = %@", [args stringForKey:@"file"]);
+        NSURL *fileURL = [NSURL URLWithString:[args stringForKey:@"file"]];
+        NSLog(@"Filepath = %@", [fileURL absoluteURL]);
         // insert code here...
         NSLog(@"My first objective C program");
         
+        // Create the print settings.
+        NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
+        [printInfo setTopMargin:0.0];
+        [printInfo setBottomMargin:0.0];
+        [printInfo setLeftMargin:0.0];
+        [printInfo setRightMargin:0.0];
+        [printInfo setHorizontalPagination:NSFitPagination];
+        [printInfo setVerticalPagination:NSFitPagination];
         
+        // Create the document reference.
+        PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
+        
+        //- (NSPrintOperation *) printOperationForPrintInfo: (NSPrintInfo *) printInfo scalingMode: (PDFPrintScalingMode) scaleMode autoRotate: (BOOL) doRotate;
+        // Invoke private method.
+        // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
+        BOOL autoRotate = YES;
+        PDFPrintScalingMode scale = kPDFPrintPageScaleDownToFit; // see PDFDocument.h
+        NSMethodSignature *signature = [PDFDocument instanceMethodSignatureForSelector:@selector(printOperationForPrintInfo:scalingMode:autoRotate:)];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        [invocation setSelector:@selector(printOperationForPrintInfo:scalingMode:autoRotate:)];
+        [invocation setArgument:&printInfo atIndex:2];
+        [invocation setArgument:&scale atIndex:3];
+        [invocation setArgument:&autoRotate atIndex:4];
+        [invocation invokeWithTarget:pdfDocument];
+        
+        // Grab the returned print operation.
+        NSPrintOperation *op = nil;
+        [invocation getReturnValue:&op];
+        
+        // Run the print operation without showing any dialogs.
+        [op setShowsPrintPanel:NO];
+        [op setShowsProgressPanel:NO];
+        [op runOperation];
     }
     return 0;
 }
