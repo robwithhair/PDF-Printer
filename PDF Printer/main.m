@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 #import <Quartz/Quartz.h>
+
 
 int main(int argc, const char * argv[])
 {
@@ -36,21 +38,24 @@ int main(int argc, const char * argv[])
         PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
         
         //- (NSPrintOperation *) printOperationForPrintInfo: (NSPrintInfo *) printInfo scalingMode: (PDFPrintScalingMode) scaleMode autoRotate: (BOOL) doRotate;
-        // Invoke private method.
-        // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
+        
         BOOL autoRotate = YES;
         PDFPrintScalingMode scale = kPDFPrintPageScaleDownToFit; // see PDFDocument.h
-        NSMethodSignature *signature = [PDFDocument instanceMethodSignatureForSelector:@selector(printOperationForPrintInfo:scalingMode:autoRotate:)];
+        NSPrintOperation *op = [pdfDocument printOperationForPrintInfo: printInfo scalingMode: scale autoRotate: autoRotate];
+        // Invoke private method.
+        // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
+        
+        /*NSMethodSignature *signature = [PDFDocument instanceMethodSignatureForSelector:@selector(printOperationForPrintInfo:scalingMode:autoRotate:)];
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:@selector(printOperationForPrintInfo:scalingMode:autoRotate:)];
         [invocation setArgument:&printInfo atIndex:2];
         [invocation setArgument:&scale atIndex:3];
         [invocation setArgument:&autoRotate atIndex:4];
-        [invocation invokeWithTarget:pdfDocument];
+        [invocation invokeWithTarget:pdfDocument];*/
         
         // Grab the returned print operation.
-        NSPrintOperation *op = nil;
-        [invocation getReturnValue:&op];
+        /*NSPrintOperation *op = nil;
+        [invocation getReturnValue:&op];*/
         
         // Run the print operation without showing any dialogs.
         [op setShowsPrintPanel:NO];
