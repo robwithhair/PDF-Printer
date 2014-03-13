@@ -13,6 +13,7 @@
 		C55FD64318D0B7EC0076342C /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64218D0B7EC0076342C /* Quartz.framework */; };
 		C55FD64518D0CEFA0076342C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64418D0CEFA0076342C /* AppKit.framework */; };
 		C55FD64718D0F0620076342C /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55FD64618D0F0620076342C /* ApplicationServices.framework */; };
+		C55FD64B18D21A730076342C /* RHArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C55FD64A18D21A730076342C /* RHArguments.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C55FD5F118CFED570076342C /* PDF Printer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PDF Printer"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C55FD5F118CFED570076342C /* pdfprinter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pdfprinter; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55FD5F418CFED570076342C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C55FD5F718CFED570076342C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C55FD5FA18CFED570076342C /* PDF Printer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PDF Printer-Prefix.pch"; sourceTree = "<group>"; };
@@ -37,6 +38,9 @@
 		C55FD64218D0B7EC0076342C /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		C55FD64418D0CEFA0076342C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		C55FD64618D0F0620076342C /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		C55FD64918D21A730076342C /* RHArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHArguments.h; sourceTree = "<group>"; };
+		C55FD64A18D21A730076342C /* RHArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHArguments.m; sourceTree = "<group>"; };
+		C55FD64C18D2691B0076342C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +70,7 @@
 		C55FD5F218CFED570076342C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C55FD5F118CFED570076342C /* PDF Printer */,
+				C55FD5F118CFED570076342C /* pdfprinter */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +89,10 @@
 		C55FD5F618CFED570076342C /* PDF Printer */ = {
 			isa = PBXGroup;
 			children = (
+				C55FD64C18D2691B0076342C /* README.md */,
 				C55FD5F718CFED570076342C /* main.m */,
+				C55FD64918D21A730076342C /* RHArguments.h */,
+				C55FD64A18D21A730076342C /* RHArguments.m */,
 				C55FD5FB18CFED570076342C /* PDF_Printer.1 */,
 				C55FD5F918CFED570076342C /* Supporting Files */,
 			);
@@ -117,7 +124,7 @@
 			);
 			name = "PDF Printer";
 			productName = "PDF Printer";
-			productReference = C55FD5F118CFED570076342C /* PDF Printer */;
+			productReference = C55FD5F118CFED570076342C /* pdfprinter */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -151,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C55FD64B18D21A730076342C /* RHArguments.m in Sources */,
 				C55FD5F818CFED570076342C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +199,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -222,6 +231,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -231,7 +241,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PDF Printer/PDF Printer-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = pdfprinter;
 			};
 			name = Debug;
 		};
@@ -240,7 +250,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PDF Printer/PDF Printer-Prefix.pch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = pdfprinter;
 			};
 			name = Release;
 		};
