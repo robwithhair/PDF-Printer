@@ -1,7 +1,8 @@
 PDF-Printer
 ===========
 
-A command line tool for printing PDF's full size in duplex mode
+A command line Mac OSX tool for printing PDF's on full size in duplex mode
+Based on the work of Dan Reese in this blog post http://www.danandcheryl.com/2010/05/how-to-print-a-pdf-file-using-cocoa
 Written in Objective C / Cocoa for OSX
 
 Usage: ./PDF\ Printer -file 'file:///Absolute/Path/To/File' -duplex true
