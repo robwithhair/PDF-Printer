@@ -29,22 +29,18 @@ int main(int argc, const char * argv[])
         // Create the print settings.
         NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
 
-        NSSize pageSize;
-        pageSize.width = 631;
-        pageSize.height = 841.9;
+        //NSSize pageSize;
+        //pageSize.width = 631;
+        //pageSize.height = 841.9;
         //[printInfo setPaperName:@"A4.Photo"];
-        [printInfo setPaperSize:pageSize];
+        //[printInfo setPaperSize:pageSize];
         
-        [printInfo setTopMargin:3.6];
-        [printInfo setBottomMargin:3.6];
-        [printInfo setLeftMargin:3.6];
-        [printInfo setRightMargin:3.6];
-        
+        [printInfo setTopMargin:0];
+        [printInfo setBottomMargin:0];
+        [printInfo setLeftMargin:0];
+        [printInfo setRightMargin:0];
         [printInfo setHorizontalPagination:NSFitPagination];
         [printInfo setVerticalPagination:NSFitPagination];
-        PMPrintSettings printSettings = [printInfo PMPrintSettings];
-        PMDuplexMode duplexMode = kPMDuplexNoTumble;
-        PMSetDuplex(printSettings, duplexMode);
         
         PMPrintSession session = [printInfo PMPrintSession];
         PMPrinter currentPrinter = NULL;
@@ -67,8 +63,13 @@ int main(int argc, const char * argv[])
         PMPageFormat originalFormat = [printInfo PMPageFormat];
         (void)PMCopyPageFormat(theChosenPageFormat, originalFormat);
         [printInfo updateFromPMPageFormat];
-        
+
+        PMPrintSettings printSettings = [printInfo PMPrintSettings];
+        PMDuplexMode duplexMode = kPMDuplexNoTumble;
+        PMSetDuplex(printSettings, duplexMode);
         [printInfo updateFromPMPrintSettings];
+        
+        
         NSLog(@"paperName  = %@", [printInfo paperName]);
         NSLog(@"Scaling Factor  = %f", [printInfo scalingFactor]);
         NSLog(@"paperSize = %f width %f height", [printInfo paperSize].width, [printInfo paperSize].height);
@@ -81,7 +82,7 @@ int main(int argc, const char * argv[])
         //- (NSPrintOperation *) printOperationForPrintInfo: (NSPrintInfo *) printInfo scalingMode: (PDFPrintScalingMode) scaleMode autoRotate: (BOOL) doRotate;
         
         BOOL autoRotate = YES;
-        PDFPrintScalingMode scale = kPDFPrintPageScaleNone; // see PDFDocument.h
+        PDFPrintScalingMode scale = kPDFPrintPageScaleDownToFit; // see PDFDocument.h
         NSPrintOperation *op = [pdfDocument printOperationForPrintInfo: printInfo scalingMode: scale autoRotate: autoRotate];
         // Invoke private method.
         // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
@@ -99,8 +100,8 @@ int main(int argc, const char * argv[])
         [invocation getReturnValue:&op];*/
         
         // Run the print operation without showing any dialogs.
-        //[op setShowsPrintPanel:NO];
-        //[op setShowsProgressPanel:NO];
+        [op setShowsPrintPanel:NO];
+        [op setShowsProgressPanel:NO];
         [op runOperation];
     }
     return 0;
