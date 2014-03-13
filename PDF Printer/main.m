@@ -28,17 +28,52 @@ int main(int argc, const char * argv[])
         
         // Create the print settings.
         NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
-        /*
-        [printInfo setTopMargin:0.0];
-        [printInfo setBottomMargin:0.0];
-        [printInfo setLeftMargin:0.0];
-        [printInfo setRightMargin:0.0];
+
+        NSSize pageSize;
+        pageSize.width = 631;
+        pageSize.height = 841.9;
+        //[printInfo setPaperName:@"A4.Photo"];
+        [printInfo setPaperSize:pageSize];
+        
+        [printInfo setTopMargin:3.6];
+        [printInfo setBottomMargin:3.6];
+        [printInfo setLeftMargin:3.6];
+        [printInfo setRightMargin:3.6];
+        
         [printInfo setHorizontalPagination:NSFitPagination];
-        [printInfo setVerticalPagination:NSFitPagination];*/
+        [printInfo setVerticalPagination:NSFitPagination];
         PMPrintSettings printSettings = [printInfo PMPrintSettings];
         PMDuplexMode duplexMode = kPMDuplexNoTumble;
         PMSetDuplex(printSettings, duplexMode);
+        
+        PMPrintSession session = [printInfo PMPrintSession];
+        PMPrinter currentPrinter = NULL;
+        (void)PMSessionGetCurrentPrinter(session, &currentPrinter);
+        CFArrayRef paperList = NULL;
+        (void)PMPrinterGetPaperList(currentPrinter, &paperList);
+        CFStringRef description = CFCopyDescription(paperList);
+        NSLog(@"paper sizes = %@", description);
+        PMPaper paper = NULL;
+        CFUUIDRef uuid = CFUUIDCreate(NULL);
+        CFStringRef uuidStr = CFUUIDCreateString(NULL, uuid);
+        PMPaperMargins margins;
+        margins.bottom = 0;
+        margins.left = 0;
+        margins.right = 0;
+        margins.top = 0;
+        PMPaperCreateCustom(currentPrinter, uuidStr, uuidStr, 595.29, 841.89, &margins, &paper);
+        PMPageFormat theChosenPageFormat = NULL;
+        (void)PMCreatePageFormatWithPMPaper(&theChosenPageFormat, paper);
+        PMPageFormat originalFormat = [printInfo PMPageFormat];
+        (void)PMCopyPageFormat(theChosenPageFormat, originalFormat);
+        [printInfo updateFromPMPageFormat];
+        
         [printInfo updateFromPMPrintSettings];
+        NSLog(@"paperName  = %@", [printInfo paperName]);
+        NSLog(@"Scaling Factor  = %f", [printInfo scalingFactor]);
+        NSLog(@"paperSize = %f width %f height", [printInfo paperSize].width, [printInfo paperSize].height);
+        NSLog(@"Page Bounds = %f x %f", [printInfo imageablePageBounds].size.width, [printInfo imageablePageBounds].size.height);
+         NSLog(@"Page origin = %f x %f", [printInfo imageablePageBounds].origin.x, [printInfo imageablePageBounds].origin.y);
         
         // Create the document reference.
         PDFDocument *pdfDocument = [[PDFDocument alloc] initWithURL:fileURL];
@@ -46,7 +81,7 @@ int main(int argc, const char * argv[])
         //- (NSPrintOperation *) printOperationForPrintInfo: (NSPrintInfo *) printInfo scalingMode: (PDFPrintScalingMode) scaleMode autoRotate: (BOOL) doRotate;
         
         BOOL autoRotate = YES;
-        PDFPrintScalingMode scale = kPDFPrintPageScaleToFit; // see PDFDocument.h
+        PDFPrintScalingMode scale = kPDFPrintPageScaleNone; // see PDFDocument.h
         NSPrintOperation *op = [pdfDocument printOperationForPrintInfo: printInfo scalingMode: scale autoRotate: autoRotate];
         // Invoke private method.
         // NOTE: Use NSInvocation because one argument is a BOOL type. Alternately, you could declare the method in a category and just call it.
@@ -64,8 +99,8 @@ int main(int argc, const char * argv[])
         [invocation getReturnValue:&op];*/
         
         // Run the print operation without showing any dialogs.
-        [op setShowsPrintPanel:NO];
-        [op setShowsProgressPanel:NO];
+        //[op setShowsPrintPanel:NO];
+        //[op setShowsProgressPanel:NO];
         [op runOperation];
     }
     return 0;
