@@ -100,8 +100,8 @@ int main(int argc, const char * argv[])
         [invocation getReturnValue:&op];*/
         
         // Run the print operation without showing any dialogs.
-        [op setShowsPrintPanel:NO];
-        [op setShowsProgressPanel:NO];
+        //[op setShowsPrintPanel:NO];
+        //[op setShowsProgressPanel:NO];
         [op runOperation];
     }
     return 0;
