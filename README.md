@@ -20,4 +20,4 @@ Pull requests are very welcome, should you wish to tidy up or add functionality 
 
 Currently working on tidying up, setting command line arguments and commenting the code properly.
 
-If you want to say thanks, just use my service.  http://post-this-for-me.appspot.com < Temporary URL
+If you want to say thanks, just use my service.  http://www.postthisforme.co.uk
