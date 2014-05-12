@@ -14,7 +14,7 @@ List the files seperated by spaces after the options.  Available options:
     -file [path...]     Optional tag to use before file path to be printed 
                         (don't use this, just list the files seperated by spaces)
 
-Use this code however you like.  It is a little scrappy as it's my first objective C application.  
+Use this code however you like.   
 
 Pull requests are very welcome, should you wish to tidy up or add functionality to this code.
 
